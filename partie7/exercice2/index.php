@@ -17,7 +17,7 @@
             <input type="text" name="firstname" placeholder="Jean" id="inputFirstname">
             <label for="lastname">Nom :</label>
             <input type="text" name="lastname" placeholder="Mich" id="inputLastname">
-            <button type="submit" name="button" id="submitButton">S'enregistrer</button>
+            <input type="submit" name="button" id="submitButton" value="S'enregistrer">
             <?php  ?>
           </form>
         </div>

@@ -4,32 +4,48 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="../exercice.css">
-    <title>Exercice 1</title>
+    <title>Exercice 6</title>
   </head>
   <body>
     <div id="containerPage">
-      <h1>Exercice 1</h1>
+      <h1>Exercice 6</h1>
       <div id="containerFormBack">
         <h2>Renseignez vos coordonnées</h2>
         <div id="containerFormFront">
-          <form class="myForm" action="user.php" method="get">
+          <form class="myForm" action="" method="POST">
+              <div class="choiceSelect">
+                <label for="choiceCivility">Civilité : </label>
+                <select name="choiceCivility">
+                  <option value="mme">Madame</option>
+                  <option value="mr">Monsieur</option>
+                </select>
+              </div>
             <label for="firstname">Prénom :</label>
             <input type="text" name="firstname" placeholder="Jean" id="inputFirstname">
             <label for="lastname">Nom :</label>
             <input type="text" name="lastname" placeholder="Mich" id="inputLastname">
             <input type="submit" name="button" id="submitButton" value="S'enregistrer">
-            <?php  ?>
+            <?php
+                $message = '';
+                if(isset($_POST['SubmitButton'])){
+                    $civility = $_POST['choiceCivility'];
+                    $firstname = $_POST['firstname'];
+                    $lastname = $_POST['lastname'];
+                    $message = 'Bonjour  ' . $civility . $firstname . $lastname ;
+                }
+                echo $message;
+            ?>
           </form>
         </div>
       </div>
       <div id="links">
         <a href="../index.php" class="linkEx accueil">Accueil</a>
-        <a href="../exercice1/index.php" class="linkEx">Exercice1</a>
-        <a href="../exercice2/index.php" class="linkEx">Exercice2</a>
         <a href="../exercice3/index.php" class="linkEx">Exercice3</a>
         <a href="../exercice4/index.php" class="linkEx">Exercice4</a>
         <a href="../exercice5/index.php" class="linkEx">Exercice5</a>
         <a href="../exercice6/index.php" class="linkEx active">Exercice6</a>
+        <a href="../exercice7/index.php" class="linkEx">Exercice7</a>
+        <a href="../exercice8/index.php" class="linkEx">Exercice8</a>
       </div>
     </div>
   </body>
