@@ -4,20 +4,27 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="../exercice.css">
-    <title>Exercice 1</title>
+    <title>Exercice 5   </title>
   </head>
   <body>
     <div id="containerPage">
-      <h1>Exercice 1</h1>
+      <h1>Exercice 5</h1>
       <div id="containerFormBack">
         <h2>Renseignez vos coordonnées</h2>
         <div id="containerFormFront">
-          <form class="myForm" action="user.php" method="get">
+          <form class="myForm" action="user.php" method="post">
+              <div class="choiceSelect">
+                <label for="choiceCivility">Civilité : </label>
+                <select name="choiceCivility">
+                  <option value="mme">Madame</option>
+                  <option value="mr">Monsieur</option>
+                </select>
+              </div>
             <label for="firstname">Prénom :</label>
             <input type="text" name="firstname" placeholder="Jean" id="inputFirstname">
             <label for="lastname">Nom :</label>
             <input type="text" name="lastname" placeholder="Mich" id="inputLastname">
-            <button type="submit" name="button" id="submitButton">S'enregistrer</button>
+            <input type="submit" name="button" id="submitButton" value="S'enregistrer">
             <?php  ?>
           </form>
         </div>

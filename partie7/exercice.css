@@ -53,32 +53,42 @@ h1{
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 8px 0px 8px black;
 }
-input, label, button{
+input, label, input[type="submit"], select{
   display: inline-block;
 }
 form{
   text-align: center;
+}
+.choiceSelect{
+    text-align: left;
+}
+.choiceSelect > label{
+    margin-left: 25px;
+}
+select{
+    width: 30%;
+    padding: 4px 2px;
 }
 label{
   width: 20%;
   font-weight: 600;
   text-align: left;
 }
-input{
+/* selection de tous les input exepté le submit */ 
+input:not(#submitButton){
   width: 60%;
   padding: 8px 12px;
   margin: 5px 0px;
   color: black;
   font-weight: 500;
 }
-button{
+input[type="submit"]{
   margin: 15px 0px;
   padding: 12px 60px;
   background-color: inherit;
   border: 1px solid #3bb16b;
   border-radius: 5px;
   font-weight: 500;
-  text-align: right;
 }
 #links{
   margin-top: 100px;

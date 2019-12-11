@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="containerPage">
-      <h1>Exercice 1</h1>
+      <h1>Exercice 2</h1>
       <div id="containerFormBack">
         <h2>Renseignez vos coordonnées</h2>
         <div id="containerFormFront">

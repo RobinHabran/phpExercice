@@ -8,17 +8,19 @@
   </head>
   <body>
     <div id="containerPage">
-      <h1>Exercice 1</h1>
+      <h1>Exercice 3</h1>
       <div id="containerFormBack">
         <h2>Renseignez vos coordonnées</h2>
         <div id="containerFormFront">
-          <form class="myForm" action="user.php" method="get">
+          <form class="myForm" action="user.php" method="GET">
             <label for="firstname">Prénom :</label>
-            <input type="text" name="firstname" placeholder="Jean" id="inputFirstname">
+            <input type="text" name="firstname" placeholder="Jean" id="inputFirstname" value="<?php isset($_GET['firstname']) ?>">
             <label for="lastname">Nom :</label>
-            <input type="text" name="lastname" placeholder="Mich" id="inputLastname">
-            <button type="submit" name="button" id="submitButton">S'enregistrer</button>
-            <?php  ?>
+            <input type="text" name="lastname" placeholder="Mich" id="inputLastname" value="<?php isset($_GET['firstname']) ?>">
+            <input type="submit" name="button" id="submitButton" value="S'enregistrer">
+            <?php  
+                
+            ?>
           </form>
         </div>
       </div>

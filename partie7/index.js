@@ -7,9 +7,17 @@ var inputLastname = document.getElementById('inputLastname');
 window.onload = function() {
   // focus sur le 1er input
   inputFirstname.focus();
+  // fonction qui renvoi 1 si les champs sont rempli et 0 sinon
+  function inputFilled(){
+      $bool = false
+      if (inputFirstname.value != '' && inputLastname.value != '') {
+          $bool = true;
+      }
+      return $bool;
+  }
   // fonction qui applique un shadow sur le bouton
   function addShadowOnHoverButton() {
-    if (inputFirstname.value != '' && inputLastname.value != '') {
+    if (inputFilled()) {
       buttonSubmit.style.transition = 'none';
       buttonSubmit.style.boxShadow = '0px 1px 2px #0c2416';
     }
@@ -21,14 +29,14 @@ window.onload = function() {
   // fonction d'application css sur le bouton une fois les input remplis
   function validationButton() {
     //coloration du boutton une fois le formulaire rempli
-    if (inputFirstname.value != '' && inputLastname.value != '') {
+    if (inputFilled()) {
       buttonSubmit.style.transition = '1s';
       buttonSubmit.style.backgroundColor = '#3bb16b';
       buttonSubmit.style.color = 'white ';
       buttonSubmit.style.cursor = 'pointer';
     }
     // décoloration du boutton si le formulaire est vide
-    if (inputFirstname.value == '' || inputLastname.value == '') {
+    else {
       buttonSubmit.style.transition = '1s';
       buttonSubmit.style.backgroundColor = 'white';
       buttonSubmit.style.color = 'inherit';
