@@ -10,17 +10,15 @@
     <div id="containerPage">
       <h1>Exercice 3</h1>
       <div id="containerFormBack">
+        <img src="../nature-solo1.png" width="100" height="250" alt="feuille" id="feuille"/>
         <h2>Renseignez vos coordonnées</h2>
         <div id="containerFormFront">
           <form class="myForm" action="user.php" method="GET">
-            <label for="firstname">Prénom :</label>
-            <input type="text" name="firstname" placeholder="Jean" id="inputFirstname" value="<?php isset($_GET['firstname']) ?>">
-            <label for="lastname">Nom :</label>
-            <input type="text" name="lastname" placeholder="Mich" id="inputLastname" value="<?php isset($_GET['firstname']) ?>">
-            <input type="submit" name="button" id="submitButton" value="S'enregistrer">
-            <?php  
-                
-            ?>
+            <label for="inputFirstname">Prénom :</label>
+            <input type="text" name="inputFirstname" placeholder="Jean" id="inputFirstname" value="<?php isset($_GET['inputFirstname']) ?>">
+            <label for="inputLastname">Nom :</label>
+            <input type="text" name="inputLastname" placeholder="Mich" id="inputLastname" value="<?php isset($_GET['inputLastname']) ?>">
+            <input type="submit" id="submitButton" value="S'enregistrer">
           </form>
         </div>
       </div>

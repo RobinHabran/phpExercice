@@ -1,3 +1,26 @@
+<?php 
+    // déclaration variables //
+    $regexName = '/[a-zéèà\-]/gmi';
+    // fin déclaration //
+    // fonctions //
+    function acceptRegexName($inputVal){
+        $bool = (preg_match($inputVal, $regexName)) ? true : false;
+        return $bool;
+    }
+    function inputFieldCorrect($inputId) {
+        $bool = (!empty($_POST[$inputId]) && acceptRegexName($inputId)) ? true : false;
+        return $bool;
+    }
+    function submitForm(){
+        header('Location: user.php');
+    }
+    function inputValIncorrect($inputId) {
+        echo 'Veuillez renseigner le champ ' . $inputId;
+    }
+    function submitFormCorrect($inputId){
+        (inputFieldCorrect($inputId)) ? submitForm() : exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -12,20 +35,22 @@
       <div id="containerFormBack">
         <h2>Renseignez vos coordonnées</h2>
         <div id="containerFormFront">
-          <form class="myForm" action="index.php" method="get">
+          <form class="myForm" action="" method="POST">
               <div class="choiceSelect">
                 <label for="choiceCivility">Civilité : </label>
-                <select name="choiceCivility">
+                <select name="choiceCivility" id="choiceCivility">
                   <option value="mme">Madame</option>
                   <option value="mr">Monsieur</option>
                 </select>
               </div>
-            <label for="firstname">Prénom :</label>
-            <input type="text" name="firstname" placeholder="Jean" id="inputFirstname">
-            <label for="lastname">Nom :</label>
-            <input type="text" name="lastname" placeholder="Mich" id="inputLastname">
-            <input type="submit" name="button" id="submitButton" value="S'enregistrer">
-            <?php  ?>
+            <label for="inputFirstname">Prénom :</label>
+            <input type="text" name="inputFirstname" placeholder="Jean" id="inputFirstname" />
+            <label for="inputLastname">Nom :</label>
+            <input type="text" name="inputLastname" placeholder="Mich" id="inputLastname" />
+            <input type="submit" id="submitButton" value="S'enregistrer" />
+            <?php 
+                (empty($_POST['inputFirstname']))
+            ?>
           </form>
         </div>
       </div>

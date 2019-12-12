@@ -15,16 +15,16 @@
           <form class="myForm" action="user.php" method="post">
               <div class="choiceSelect">
                 <label for="choiceCivility">Civilité : </label>
-                <select name="choiceCivility">
+                <select name="choiceCivility" id="choiceCivility">
                   <option value="mme">Madame</option>
                   <option value="mr">Monsieur</option>
                 </select>
               </div>
-            <label for="firstname">Prénom :</label>
-            <input type="text" name="firstname" placeholder="Jean" id="inputFirstname">
-            <label for="lastname">Nom :</label>
-            <input type="text" name="lastname" placeholder="Mich" id="inputLastname">
-            <input type="submit" name="button" id="submitButton" value="S'enregistrer">
+            <label for="inputFirstname">Prénom :</label>
+            <input type="text" name="inputFirstname" placeholder="Jean" id="inputFirstname" />
+            <label for="inputLastname">Nom :</label>
+            <input type="text" name="inputLastname" placeholder="Mich" id="inputLastname" />
+            <input type="submit" id="submitButton" value="S'enregistrer" />
             <?php  ?>
           </form>
         </div>

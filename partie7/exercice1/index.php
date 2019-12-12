@@ -1,27 +1,9 @@
-<?php
-  function verifExist($var)
-  {
-    $bool = false;
-    if ($var != '') {
-      $bool = true;;
-    }
-    return $bool;
-  }
-  function verifAccept($var)
-  {
-    $bool = false;
-    if ($var == '/[A-Za-z-0 ]{1,80}/g') {
-      $bool = true;
-    }
-    return $bool;
-  }
-?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="../exercice.css">
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../exercice.css" />
     <title>Exercice 1</title>
   </head>
   <body>
@@ -30,12 +12,12 @@
       <div id="containerFormBack">
         <h2>Renseignez vos coordonnées</h2>
         <div id="containerFormFront">
-          <form class="myForm" action="user.php" method="get">
-            <label for="firstname">Prénom :</label>
-            <input type="text" name="firstname" placeholder="Jean" id="inputFirstname">
-            <label for="lastname">Nom :</label>
-            <input type="text" name="lastname" placeholder="Mich" id="inputLastname">
-            <input type="submit" name="button" id="submitButton" value="S'enregistrer">
+          <form class="myForm" action="user.php" method="GET">
+            <label for="inputFirstname">Prénom :</label>
+            <input type="text" name="inputFirstname" placeholder="Jean" id="inputFirstname" />
+            <label for="inputLastname">Nom :</label>
+            <input type="text" name="inputLastname" placeholder="Mich" id="inputLastname" />
+            <input type="submit" id="submitButton" value="S'enregistrer" />
           </form>
         </div>
       </div>

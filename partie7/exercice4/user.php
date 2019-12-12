@@ -6,7 +6,7 @@
     </head>
     <body>
         <?php
-            echo 'tu t\'appels ' . $_POST['firstname'] . ' ' . $_POST['lastname'] ; 
+            echo 'tu t\'appels ' . $_POST['inputFirstname'] . ' ' . $_POST['inputLastname'] ; 
         ?>
     </body>
 </html>

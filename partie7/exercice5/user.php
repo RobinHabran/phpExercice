@@ -6,7 +6,7 @@
     </head>
     <body>
         <?php
-            echo 'Bonjour ' . $_POST['choiceCivility'] . ' ' . $_POST['firstname'] . ' ' . $_POST['lastname'] ; 
+            echo 'Bonjour ' . $_POST['choiceCivility'] . ' ' . $_POST['inputFirstname'] . ' ' . $_POST['inputLastname'] ; 
         ?>
     </body>
 </html>

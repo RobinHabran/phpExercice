@@ -13,11 +13,11 @@
         <h2>Renseignez vos coordonnées</h2>
         <div id="containerFormFront">
           <form class="myForm" action="user.php" method="POST">
-            <label for="firstname">Prénom :</label>
-            <input type="text" name="firstname" placeholder="Jean" id="inputFirstname">
-            <label for="lastname">Nom :</label>
-            <input type="text" name="lastname" placeholder="Mich" id="inputLastname">
-            <input type="submit" name="button" id="submitButton" value="S'enregistrer">
+            <label for="inputFirstname">Prénom :</label>
+            <input type="text" name="inputFirstname" placeholder="Jean" id="inputFirstname" />
+            <label for="inputLastname">Nom :</label>
+            <input type="text" name="inputLastname" placeholder="Mich" id="inputLastname" />
+            <input type="submit" id="submitButton" value="S'enregistrer" />
             <?php  ?>
           </form>
         </div>
