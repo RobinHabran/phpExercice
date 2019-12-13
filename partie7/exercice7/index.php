@@ -39,8 +39,9 @@
               <div class="choiceSelect">
                 <label for="choiceCivility">Civilité : </label>
                 <select name="choiceCivility" id="choiceCivility">
-                  <option value="mme">Madame</option>
-                  <option value="mr">Monsieur</option>
+                    <option disabled selected>à choisir</option>
+                    <option value="mme">Madame</option>
+                    <option value="mr">Monsieur</option>
                 </select>
               </div>
             <label for="inputFirstname">Prénom :</label>

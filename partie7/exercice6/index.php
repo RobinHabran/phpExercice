@@ -1,5 +1,5 @@
 <?php
-// déclaration variables //
+// déclaration variables globales//
     
 // fin déclaration //
 // fonctions //
@@ -24,8 +24,6 @@
             if(acceptRegexName($inputVal)){
                 $bool = true;
             }
-        }else{
-            inputValIncorrect($inputVal);
         }
         return $bool;
     }
@@ -56,22 +54,30 @@
                     if (inputFieldCorrect($_POST['inputFirstname']) && inputFieldCorrect($_POST['inputLastname'])) {
                         echo 'Vos données ont été renseignées avec succès.';
                     } else {
-                        ?>
-                        <form class="myForm" action="" method="POST">
-                            <div class="choiceSelect">
-                                <label for="choiceCivility">Civilité : </label>
-                                <select name="choiceCivility" id="choiceCivility" value="<?php isset($_POST['choiceCivility']) ?>">
-                                    <option value="mme">Madame</option>
-                                    <option value="mr">Monsieur</option>
-                                </select>
-                            </div>
-                            <label for="inputFirstname">Prénom :</label>
-                            <input type="text" name="inputFirstname" placeholder="Jean" id="inputFirstname" value="<?php isset($_POST['inputFirstname']) ?>"/>
-                            <label for="inputLastname">Nom :</label>
-                            <input type="text" name="inputLastname" placeholder="Mich" id="inputLastname" value="<?php isset($_POST['inputLastname']) ?>" />
-                            <input type="submit" id="submitButton" value="S'enregistrer" />
-                        </form>
-                        <?php
+                        if (){
+                            if(){
+                                echo inputValIncorrect($_POST['inputFirstname']);
+                            }else{
+                                echo inputValIncorrect($_POST['inputLastname']);
+                            }
+                        }else{
+                            ?>
+                            <form class="myForm" action="#" method="POST">
+                                <div class="choiceSelect">
+                                    <label for="choiceCivility">Civilité : </label>
+                                    <select name="choiceCivility" id="choiceCivility" value="<?php isset($_POST['choiceCivility']) ?>">
+                                        <option disabled selected>à choisir</option>
+                                        <option value="mme">Madame</option>
+                                        <option value="mr">Monsieur</option>
+                                    </select>
+                                </div>
+                                <label for="inputFirstname">Prénom :</label>
+                                <input type="text" name="inputFirstname" placeholder="Jean" id="inputFirstname" value="<?php isset($_POST['inputFirstname']) ?>"/>
+                                <label for="inputLastname">Nom :</label>
+                                <input type="text" name="inputLastname" placeholder="Mich" id="inputLastname" value="<?php isset($_POST['inputLastname']) ?>" />
+                                <input type="submit" id="submitButton" value="S'enregistrer" />
+                            </form>
+                            <?php
                     }
                     ?>
                 </div>

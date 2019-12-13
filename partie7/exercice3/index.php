@@ -10,7 +10,7 @@
     <div id="containerPage">
       <h1>Exercice 3</h1>
       <div id="containerFormBack">
-        <img src="../nature-solo1.png" width="100" height="250" alt="feuille" id="feuille"/>
+        <img src="../nature-solo1.png" alt="feuille" id="feuille"/>
         <h2>Renseignez vos coordonnées</h2>
         <div id="containerFormFront">
           <form class="myForm" action="user.php" method="GET">

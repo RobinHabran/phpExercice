@@ -116,5 +116,7 @@ input[type="submit"]{
 }
 #feuille{
   position: absolute;
-  margin-top: 50px;
+  margin-top: -180px;
+  margin-left: 463px;
+  transform: scale(0.66);
 }
