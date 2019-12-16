@@ -7,6 +7,7 @@ body{
   font-size: 16px;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 #containerPage{
   margin-left: auto;
@@ -119,4 +120,7 @@ input[type="submit"]{
   margin-top: -180px;
   margin-left: 463px;
   transform: scale(0.66);
+}
+.error{
+    color: red;
 }
