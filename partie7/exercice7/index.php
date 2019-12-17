@@ -43,13 +43,13 @@
             return 0;
         }
     // fin déclaration de founctions
-        if(isset($_POST['submitButton'])){
-            if(isset($_FILES['inputFile']) && $_FILES['inputFile']['error'] == 0){
-                $infoFile = pathinfo($_FILES['inputFile']['name']);
-                $extensionFile = $infoFile['extension'];
-                $extensionsAllowed = array('jpg', 'jpeg', 'gif', 'png');
-            }
+    if(isset($_POST['submitButton'])){
+        if(isset($_FILES['inputFile']) && $_FILES['inputFile']['error'] == 0){
+            $infoFile = pathinfo($_FILES['inputFile']['name']);
+            $extensionFile = $infoFile['extension'];
+            $extensionsAllowed = array('jpg', 'jpeg', 'gif', 'png');
         }
+    }
 ?>
 <html lang="fr" dir="ltr">
   <head>
@@ -69,24 +69,25 @@
                 if (isset($_POST['submitButton']) && inputFieldCorrect($_POST['inputFirstname']) && inputFieldCorrect($_POST['inputLastname']) && verifFile('inputFile')) {
                     // upload du fichier
                     move_uploaded_file($_FILES['inputFile']['tmp_name'], 'uploads/' . basename($_FILES['inputFile']['name']));
+                    chmod($extensionFile, 0644);
                     echo 'Vos données ont été renseignées avec succès.';
                 } else {
                 ?>  <form class="myForm" action="" method="POST" enctype="multipart/form-data">
                     <div class="choiceSelect">
                       <label for="choiceCivility">Civilité : </label>
-                      <select name="choiceCivility" id="choiceCivility">
+                      <select name="choiceCivility" id="choiceCivility" required>
                           <option disabled selected>à choisir</option>
                           <option value="mme">Madame</option>
                           <option value="mr">Monsieur</option>
                       </select>
                     </div>
                     <label for="inputFirstname">Prénom :</label>
-                    <input type="text" name="inputFirstname" placeholder="Jean" id="inputFirstname" />
+                    <input type="text" name="inputFirstname" placeholder="Jean" id="inputFirstname" required />
                     <label for="inputLastname">Nom :</label>
-                    <input type="text" name="inputLastname" placeholder="Mich" id="inputLastname" />
+                    <input type="text" name="inputLastname" placeholder="Mich" id="inputLastname" required />
                     <label for="inputFile">Votre photo de profil :</label>
                     <input type="file" name="inputFile" id="inputFile" />
-                    <input type="submit" name="submitButton" id="submitButton" value="S'enregistrer" />
+                    <input type="submit" name="submitButton" id="submitButton" value="S'enregistrer" required />
                     <?php
                     // si bouton de submit a été clické
                     if(isset($_POST['submitButton'])){
