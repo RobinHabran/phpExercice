@@ -1,3 +1,18 @@
+<?php
+    if(isset($_POST['submitButton']) && isset($_POST['usernameLogin']) && isset($_POST['passwordLogin'])){
+        setcookie('username', $_POST['usernameLogin'], time() + 1*3600, '/');
+        setcookie('password', $_POST['passwordLogin'], time() + 1*3600, '/');
+    }
+    
+    function removeCookie($cookieName) {
+        if(isset($_COOKIE[$cookieName])){
+            unset($_COOKIE[$cookieName]);
+            setcookie($cookieName, null, -1, '/');
+            return true;
+        }
+        return false;
+    }
+  ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
     <head>
@@ -5,32 +20,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
         <link rel="stylesheet" href="../exercice.css" />
-        <title>P-8 Exercice 1 </title>
+        <title>P-8 Exercice 3 </title>
     </head>
     <body>
         <?php include '../navbar.php'; ?>
         <div class="container-fluid"
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h1>Exercice 1 : </h1>
+                    <h1>Exercice 3 : </h1>
                     <div class="line"></div>
                     <h2>Consignes : </h2>
                     <p class="consigne"><?= file_get_contents('consigne.txt') ?></p>
                     <div class="row">
-                        <div class="col-4 text-center">
-                            <h3>Votre User Agent: </h3>
-                            <p><?= $_SERVER['HTTP_USER_AGENT'] ?></p>
-                            <code>$_SERVER['HTTP_USER_AGENT']</code>
-                        </div>
-                        <div class="col-4 text-center">
-                            <h3>Votre adresse ip: </h3>
-                            <p><?= $_SERVER['REMOTE_ADDR'] ?></p>
-                            <code>$_SERVER['REMOTE_ADDR']</code>
-                            </div>
-                        <div class="col-4 text-center">
-                            <h3>Nom du server: </h3>
-                            <p><?= $_SERVER['PHP_SELF'] ?></p>
-                            <code>$_SERVER['PHP_SELF']</code>
+                        <div class="col-md-6 offset-md-3 text-center">
+                        <?php 
+                            if(isset($_POST['submitButton']) && isset($_POST['usernameLogin']) && isset($_POST['passwordLogin'])){
+                                ?>
+                                <div>
+                                    <p>Nom d'Utilisateur : <?= $_COOKIE['username']?> 
+                                    <p>Mot de passe : <?= $_COOKIE['password'];?>
+                                </div>
+                            <button onclick="<?php removeCookie('username'); removeCookie('password');?>"><a href="index.php">Back</a></button><?php
+                            }else{
+                        ?><form id="form" action="" method="POST">
+                            <label for="usernameLogin">Nom d'utilisateur : </label>
+                            <input type="text" name="usernameLogin" placeholder="JeanMich60" id="usernameLogin" required/>
+                            <label for="passwordLogin">Mot de passe : </label>
+                            <input type="password" name="passwordLogin" placeholder="**********" id="passewordLogin" required/>
+                            <input type="checkbox" name="userPolitics" id="userPolitics" required />
+                            <label for="userPolitics" id="userPoliticsLabel" class="pointer">J'accepte les &nbsp;</label>
+                            <a id="userPoliticsLink" class="pointer">Conditions d'Utilisation</a>
+                            <input type="submit" name="submitButton" id="submitButton" value="Se connecter" class="pointer" />
+                        </form>
+                        <?php } ?>
                         </div>
                     </div>
                 </div>
