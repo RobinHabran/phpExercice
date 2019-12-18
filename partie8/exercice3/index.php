@@ -1,7 +1,8 @@
 <?php
-    if(isset($_POST['submitButton']) && isset($_POST['usernameLogin']) && isset($_POST['passwordLogin'])){
-        setcookie('username', $_POST['usernameLogin'], time() + 1*3600, '/');
-        setcookie('password', $_POST['passwordLogin'], time() + 1*3600, '/');
+    
+    if(isset($_POST['submitButton'])){
+        setcookie('username', $_POST['usernameLogin'], time() + 1*3600);
+        setcookie('password', $_POST['passwordLogin'], time() + 1*3600);
     }
     
     function removeCookie($cookieName) {
@@ -33,14 +34,15 @@
                     <p class="consigne"><?= file_get_contents('consigne.txt') ?></p>
                     <div class="row">
                         <div class="col-md-6 offset-md-3 text-center">
-                        <?php 
+                        <?php   
                             if(isset($_POST['submitButton']) && isset($_POST['usernameLogin']) && isset($_POST['passwordLogin'])){
                                 ?>
                                 <div>
                                     <p>Nom d'Utilisateur : <?= $_COOKIE['username']?> 
                                     <p>Mot de passe : <?= $_COOKIE['password'];?>
                                 </div>
-                            <button onclick="<?php removeCookie('username'); removeCookie('password');?>"><a href="index.php">Back</a></button><?php
+                                <?php
+                                removeCookie('username'); removeCookie('password');
                             }else{
                         ?><form id="form" action="" method="POST">
                             <label for="usernameLogin">Nom d'utilisateur : </label>

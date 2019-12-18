@@ -1,10 +1,17 @@
 <?php
+    function removeCookie($cookieName) {
+        if(isset($_COOKIE[$cookieName])){
+            unset($_COOKIE[$cookieName]);
+            setcookie($cookieName, null, -1, '/');
+            return true;
+        }
+        return false;
+    }
+    removeCookie('username'); removeCookie('passeword');
     if(isset($_POST['submitButton']) && isset($_POST['usernameLogin']) && isset($_POST['passewordLogin'])){
         setcookie('username', $_POST['usernameLogin'], time() + 1*3600, '/');
         setcookie('passeword', $_POST['passewordLogin'], time() + 1*3600, '/');
     }
-    
-    
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
