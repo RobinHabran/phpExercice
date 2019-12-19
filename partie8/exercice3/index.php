@@ -1,10 +1,8 @@
 <?php
-    
     if(isset($_POST['submitButton'])){
         setcookie('username', $_POST['usernameLogin'], time() + 1*3600);
         setcookie('password', $_POST['passwordLogin'], time() + 1*3600);
     }
-    
     function removeCookie($cookieName) {
         if(isset($_COOKIE[$cookieName])){
             unset($_COOKIE[$cookieName]);
@@ -13,7 +11,10 @@
         }
         return false;
     }
-  ?>
+    function showCookie($cookie) {
+        return (isset($_COOKIE[$cookie])) ? $_COOKIE[$cookie] : $cookie . ' n\'existe pas' ;
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
     <head>
@@ -38,8 +39,8 @@
                             if(isset($_POST['submitButton']) && isset($_POST['usernameLogin']) && isset($_POST['passwordLogin'])){
                                 ?>
                                 <div>
-                                    <p>Nom d'Utilisateur : <?= $_COOKIE['username']?> 
-                                    <p>Mot de passe : <?= $_COOKIE['password'];?>
+                                    <p>Nom d'Utilisateur : <?= showCookie('username')?> 
+                                    <p>Mot de passe : <?= showCookie('password');?>
                                 </div>
                                 <?php
                                 removeCookie('username'); removeCookie('password');

@@ -1,0 +1,1 @@
+Afficher la date courante en respectant la forme <span class="bold">jj/mm/aaaa</span> (ex : 16/05/2016)

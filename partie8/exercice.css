@@ -10,6 +10,10 @@ h2{
     font-size: 1.5rem;
     margin-bottom: 20px;
 }
+h3{
+    font-size: 1.3rem;
+    margin: 0 0 50px 0;
+}
 form{
     padding: 50px 65px;
     border-radius: 5px;
@@ -66,7 +70,7 @@ input:not(#userPolitics){
     margin-bottom: 30px;
 }
 .consigne{
-    margin: 0 0 100px 15px;
+    margin: 0 0 70px 15px;
 }
 code{
     
@@ -94,4 +98,7 @@ button > a{
 .button:hover , button:hover{
     color: white;
     text-decoration: none;
+}
+rowButton{
+    margin: 45px 0 0 0 ;
 }

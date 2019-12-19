@@ -1,0 +1,19 @@
+.bold{ font-weight: bold; }
+.underline{ text-decoration: underline; }
+
+.navbar{
+    margin: 0 0 50px 0;
+}
+.exercice{
+    margin: 10px 0 50px 20px ;
+}
+.exercice > a , .exercice > a:hover{
+    color: white;
+    text-decoration: none;
+}
+h1{
+    margin-bottom: 20px;
+}
+.answer{
+    margin-top: 50px;
+}
