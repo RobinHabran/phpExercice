@@ -2,7 +2,6 @@
     date_default_timezone_set('Europe/Paris'); 
     setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
     // déclaration de variable
-        $actualDateFr = strftime('%A %d %B %G');
         $actuaDate = date('l j F Y');
     // fin de déclaration de variable days
     // fonction qui formate un timestamp à une certaine date 
@@ -16,16 +15,16 @@
             $monthLetter = array('janvier' , 'février' , 'mars' , 'avril' , 'mai' , 'juin' , 'juillet' ,'août' , 'septembre' , 'octobre' , 'novembre' , 'décembre');
             return $monthLetter[$monthNumber-1];
         }
-        // return la date au format 'Janvier 12 février 2020' 
+        // return la date au format 'Jeudi 12 février 2020' 
         function sentenceOfDateFr(){
           // jour de la semaine en chiffre soit 1=lundi, 2=mardi ...etc
-          $actualDayOfWeek = date('N' , strtotime(date('N') . ' + 20 days'));
+          $actualDayOfWeek = date('N',strtotime('+20 days'));
           // jour du mois en chiffre
-          $actualDayNumber = date('d' , strtotime(date('j') . ' + 20 days'));
+          $actualDayNumber = date('d',strtotime('+20 days'));
           // mois en chiffre soit 1=janvier, 2=février ...etc
-          $actualMonthNumber = date('n' , strtotime(date('F') . ' + 20 days'));
+          $actualMonthNumber = date('m',strtotime('+20 days'));
           // année en chiffre format YYYY 
-          $actualYearNumber = date('Y' , strtotime(date('Y') . ' + 20 days'));
+          $actualYearNumber = date('Y',strtotime('+20 days'));
           return actualDay($actualDayOfWeek) . ' ' . $actualDayNumber . ' ' . actualMonth($actualMonthNumber) . ' ' . $actualYearNumber;
         }
 ?>
@@ -47,9 +46,24 @@
                     <div class="line"></div>
                     <h2>Consignes : </h2>
                     <p class="consigne"><?= file_get_contents('consigne.txt') ?></p>
+                    <div class="row">
+                      <div class='cold-md-6 offset-md-4'>
+                        <h3>Version UX : </h3>
+                      </div>
+                    </div>
                     <div class="row answer">
-                        <div class="col-md-6 offset-md-3 text-center answer">
-                            <p>Dans 20 jours nous serons le  <span class="bold"><?= sentenceOfDateFr(); ?></span></p>
+                        <div class="col-md-6 offset-md-3 text-center">
+                            <p>Dans 20 jours nous serons le   <span class="bold"><?= date('d/m/Y',strtotime('+20 days')); ?></span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class='cold-md-6 offset-md-4'>
+                        <h3>Version simple : </h3>
+                      </div>
+                    </div>
+                    <div class="row answer">
+                        <div class="col-md-6 offset-md-3 text-center">
+                            <p>Dans 20 jours nous serons le   <span class="bold"><?= sentenceOfDateFr(); ?></span>.</p>
                         </div>
                     </div>
                 </div>
