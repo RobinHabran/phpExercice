@@ -1,10 +1,7 @@
 <?php
     date_default_timezone_set('Europe/Paris'); 
     setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
-    // déclaration de variable
-        $actuaDate = date('l j F Y');
-    // fin de déclaration de variable days
-    // fonction qui formate un timestamp à une certaine date 
+    // déclaration de fonctions
         // demande 'date(N)' en parametre soit 1=lundi, 2=mardi ...etc
         function actualDay($dayNumber){
             $dayLetter = array('lundi' , 'mardi' , 'mercredi' , 'jeudi' , 'vendredi' , 'samedi' , 'dimanche' );
@@ -15,6 +12,7 @@
             $monthLetter = array('janvier' , 'février' , 'mars' , 'avril' , 'mai' , 'juin' , 'juillet' ,'août' , 'septembre' , 'octobre' , 'novembre' , 'décembre');
             return $monthLetter[$monthNumber-1];
         }
+        // fonction qui formate un timestamp à une certaine date 
         // return la date au format 'Jeudi 12 février 2020' 
         function sentenceOfDateFr(){
           // jour de la semaine en chiffre soit 1=lundi, 2=mardi ...etc
@@ -48,7 +46,7 @@
                     <p class="consigne"><?= file_get_contents('consigne.txt') ?></p>
                     <div class="row">
                       <div class='cold-md-6 offset-md-4'>
-                        <h3>Version UX : </h3>
+                        <h3>Version simple : </h3>
                       </div>
                     </div>
                     <div class="row answer">
@@ -58,7 +56,7 @@
                     </div>
                     <div class="row">
                       <div class='cold-md-6 offset-md-4'>
-                        <h3>Version simple : </h3>
+                        <h3>Version UX : </h3>
                       </div>
                     </div>
                     <div class="row answer">

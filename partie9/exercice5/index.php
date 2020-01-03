@@ -4,19 +4,6 @@
     // déclaration de variable
         $objectifDate = '16 mai 2016';
     // fin de déclaration de variable
-    // fonction qui formate un timestamp à une certaine date 
-        function formatTimestamp($sec){
-            $result = 'not a number';
-            if(is_int($sec)){
-                $result = $sec / 31556926 % 12 . ' années, ';
-                $result .= $sec / 604800 % 52 . ' semaines, ';
-                $result .= $sec / 86400 % 7 . ' jours, ';
-                $result .= $sec / 3600 % 24 . ' heures, ';
-                $result .= $sec / 60 % 60 . ' minutes et ';
-                $result .= $sec % 60 . ' secondes.';
-            }
-            return $result;
-        }
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -37,27 +24,8 @@
                     <h2>Consignes : </h2>
                     <p class="consigne"><?= file_get_contents('consigne.txt') ?></p>
                     <div class="row answer">
-                        <!-- 
-                        <div class="col-md-8 offset-md-2 text-center answer">
-                            <form name="formDate" method="POST">
-                                <label for="dayNumber">Jour :</label>
-                                <input type="number" id="dayNumber" placeholder="23" value="15" />
-                                <label for="dayLetter">Jour :</label>
-                                <input type="text" id="dayLetter" placeholder="mardi" value="mardi" />
-                                <label for="month">Mois:</label>
-                                <input type="text" id="month" placeholder="août" value="août" />
-                                <label for="hour">Heure:</label>
-                                <input type="number" id="hour" placeholder="15" value="15" />
-                                <label for="minute">Minute:</label>
-                                <input type="number" id="minute" placeholder="00" value="00" />
-                                <label for="second">Seconde:</label>
-                                <input type="number" id="second" placeholder="00" value="00" />
-                            </form>
-                        </div>
-                        -->
                         <div class="col-md-6 offset-md-3 text-center answer">
-                            <!-- 'round'= arrondi ; 'time()' donne le timestamp actuel ; 'mktime()'= timestamp jusqu'à une date ; /86400 pour convertir en jour -->
-                            <p>Depuis le <span class="bold"><?=  $objectifDate ?></span> il s'est passé <?= round((time() - (mktime('10','00','00','5','16','2016')))/ 86400); ?> jours</p>
+                            <p>Depuis le <span class="bold"><?= $objectifDate ?></span> il s'est passé <?= round((time() - (mktime('10','00','00','5','16','2016')))/ 86400); ?> jours</p>
                         </div>
                     </div>
                 </div>

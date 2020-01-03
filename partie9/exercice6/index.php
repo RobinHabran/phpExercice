@@ -2,21 +2,8 @@
     date_default_timezone_set('UTC');
     setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
     // déclaration de variable
-        $objectifDate = '16 mai 2016';
+        
     // fin de déclaration de variable
-    // fonction qui formate un timestamp à une certaine date 
-        function formatTimestamp($sec){
-            $result = 'not a number';
-            if(is_int($sec)){
-                $result = $sec / 31556926 % 12 . ' années, ';
-                $result .= $sec / 604800 % 52 . ' semaines, ';
-                $result .= $sec / 86400 % 7 . ' jours, ';
-                $result .= $sec / 3600 % 24 . ' heures, ';
-                $result .= $sec / 60 % 60 . ' minutes et ';
-                $result .= $sec % 60 . ' secondes.';
-            }
-            return $result;
-        }
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -38,7 +25,6 @@
                     <p class="consigne"><?= file_get_contents('consigne.txt') ?></p>
                     <div class="row answer">
                         <div class="col-md-6 offset-md-3 text-center answer">
-                            <!-- 'round'= arrondi ; 'mktime()'= timestamp jusqu'à une date ; /86400 pour convertir en jour -->
                             <p>le mois de <span class="bold">février</span> de l'année <span class="bold">2016</span> a compté <?= round(((mktime('00','00','00','3','1','2016')) - (mktime('00','00','01','2','1','2016')))/ 86400); ?> jours.</p>
                         </div>
                     </div>

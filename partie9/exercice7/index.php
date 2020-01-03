@@ -1,10 +1,7 @@
 <?php
     date_default_timezone_set('Europe/Paris'); 
     setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
-    // déclaration de variable
-        $actuaDate = date('l j F Y');
-    // fin de déclaration de variable days
-    // fonction qui formate un timestamp à une certaine date 
+    // déclaration de fonctions
         // demande 'date(N)' en parametre soit 1=lundi, 2=mardi ...etc
         function actualDay($dayNumber){
             $dayLetter = array('lundi' , 'mardi' , 'mercredi' , 'jeudi' , 'vendredi' , 'samedi' , 'dimanche' );
@@ -15,6 +12,7 @@
             $monthLetter = array('janvier' , 'février' , 'mars' , 'avril' , 'mai' , 'juin' , 'juillet' ,'août' , 'septembre' , 'octobre' , 'novembre' , 'décembre');
             return $monthLetter[$monthNumber-1];
         }
+        // fonction qui formate un timestamp à une certaine date 
         // return la date au format 'Jeudi 12 février 2020' 
         function sentenceOfDateFr(){
           // jour de la semaine en chiffre soit 1=lundi, 2=mardi ...etc
@@ -27,6 +25,15 @@
           $actualYearNumber = date('Y',strtotime('+20 days'));
           return actualDay($actualDayOfWeek) . ' ' . $actualDayNumber . ' ' . actualMonth($actualMonthNumber) . ' ' . $actualYearNumber;
         }
+        
+        // La méthode avec objet
+          //instentiation de l'objet date
+          $dateObject = new DateTime();
+          $dateObject2 = new DateTime();
+          // appel de la méthode qui ajoute une 'Period' de '20 Days' à l'objet
+          $dateObject->add(new DateInterval('P20D'));
+          // appel de la méthode qui retire une 'Period' de '20 Days' à l'objet
+          $dateObject2->sub(new DateInterval('P20D'));
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -48,17 +55,19 @@
                     <p class="consigne"><?= file_get_contents('consigne.txt') ?></p>
                     <div class="row">
                       <div class='cold-md-6 offset-md-4'>
-                        <h3>Version UX : </h3>
+                        <h3>Version Simple : </h3>
                       </div>
                     </div>
                     <div class="row answer">
                         <div class="col-md-6 offset-md-3 text-center">
-                            <p>Dans 20 jours nous serons le   <span class="bold"><?= date('d/m/Y',strtotime('+20 days')); ?></span></p>
+                            <p>Dans 20 jours nous serons le   <span class="bold"><?= date('d/m/Y h:i',strtotime('+20 days')); ?></span></p>
+                            <p>Dans 20 jours nous serons le   <span class="bold"><?= $dateObject->format('d/m/Y'); ?></span></p>
+                            <p>Il y a 20 jours nous étions le   <span class="bold"><?= $dateObject2->format('d/m/Y'); ?></span></p>
                         </div>
                     </div>
                     <div class="row">
                       <div class='cold-md-6 offset-md-4'>
-                        <h3>Version simple : </h3>
+                        <h3>Version UX : </h3>
                       </div>
                     </div>
                     <div class="row answer">
