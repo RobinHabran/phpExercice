@@ -11,9 +11,27 @@
     color: white;
     text-decoration: none;
 }
+p{
+  font-size: 1rem;
+}
 h1{
-    margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+h2{
+  font-size: 1.5rem;
+}
+h3{
+  font-size: 1.3rem;
 }
 .answer{
     margin-top: 50px;
+}
+.buttonEx, .buttonEx:hover{
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  background-color: #0088ff;
+  
 }

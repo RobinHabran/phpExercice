@@ -1,0 +1,13 @@
+h3{
+  color: #235233;
+}
+.days{
+  border-top: 1px solid #235233;
+  padding: 10px 0;
+  background-color: #4a9763;
+  color: white;
+}
+.case{
+  border: 1px solid #235233;
+  height: 50px;
+}
