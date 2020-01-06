@@ -25,28 +25,43 @@
                 <label for="lastname">Prénom</label>
                 <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
                 <!-- lastanem -->
-                <label for="lastname">Nom</label>
+                <label for="lastname">Date de naissance</label>
                 <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
                 <!-- lastanem -->
-                <label for="lastname">Nom</label>
+                <label for="lastname">Pays de naissance</label>
                 <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
                 <!-- lastanem -->
-                <label for="lastname">Nom</label>
+                <label for="lastname">Nationnalité</label>
                 <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
                 <!-- lastanem -->
-                <label for="lastname">Nom</label>
+                <label for="lastname">Adresse</label>
                 <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
                 <!-- lastanem -->
-                <label for="lastname">Nom</label>
+                <label for="lastname">Email</label>
                 <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
                 <!-- lastanem -->
-                <label for="lastname">Nom</label>
+                <label for="lastname">Téléphone</label>
                 <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
                 <!-- lastanem -->
-                <label for="lastname">Nom</label>
+                <label for="lastname">Diplôme</label>
                 <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
                 <!-- lastanem -->
-                <label for="lastname">Nom</label>
+                <label for="lastname">Numéro pôle Emploi</label>
+                <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
+                <!-- lastanem -->
+                <label for="lastname">Nombre de badge</label>
+                <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
+                <!-- lastanem -->
+                <label for="lastname">Lien codeacademy</label>
+                <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
+                <!-- lastanem -->
+                <label for="lastname">Si vous étiez un super héros/une super héroïne, qui seriez-vous et pourquoi?</label>
+                <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
+                <!-- lastanem -->
+                <label for="lastname">Racontez-nous un de vos "hacks" (pas forcément technique ou informatique)</label>
+                <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
+                <!-- lastanem -->
+                <label for="lastname">Avez vous déjà eu une expérience avec la programmation et/ou l'informatique avant de remplir ce formulaire ?</label>
                 <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones">
               </form>
             </div>
