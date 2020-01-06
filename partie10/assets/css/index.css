@@ -1,0 +1,37 @@
+.bold{ font-weight: bold; }
+.underline{ text-decoration: underline; }
+
+.navbar{
+    margin: 0 0 50px 0;
+}
+.exercice{
+    margin: 10px 0 50px 20px ;
+}
+.exercice > a , .exercice > a:hover{
+    color: white;
+    text-decoration: none;
+}
+p{
+  font-size: 1rem;
+}
+h1{
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+h2{
+  font-size: 1.5rem;
+}
+h3{
+  font-size: 1.3rem;
+}
+.answer{
+    margin-top: 50px;
+}
+.buttonEx, .buttonEx:hover{
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  background-color: #0088ff;
+  
+}

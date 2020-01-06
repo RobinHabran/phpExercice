@@ -2,19 +2,53 @@
     date_default_timezone_set('Europe/Paris'); 
     setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
     // déclaration de variable
-        $actuaDate = date('l j F Y');
+        $actualDate = date('l j F Y');
+        // si les post n'existent pas utiliser le date()
+        $monthSelected = (!empty($_POST['month']) ? $_POST['month'] : date('m'));
+        $yearSelected = (!empty($_POST['year']) ? $_POST['year'] : date('Y'));
+        // array des mois
+        $arrayMonth = array(
+                '1' => 'Janvier',
+                '2' => 'Fevrier',
+                '3' => 'Mars',
+                '4' => 'Avril',
+                '5' => 'Mai',
+                '6' => 'Juin',
+                '7' => 'Juillet',
+                '8' => 'Août',
+                '9' => 'Septembre',
+                '10' => 'Octobre',
+                '11' => 'Novembre',
+                '12' => 'Décembre'
+            );
     // fin de déclaration de variable days
-    // fonction qui formate un timestamp à une certaine date 
-        // demande 'date(N)' en parametre soit 1=lundi, 2=mardi ...etc
-        function day($dayNumber){
-            $dayLetter = array('lundi' , 'mardi' , 'mercredi' , 'jeudi' , 'vendredi' , 'samedi' , 'dimanche' );
-            return $dayLetter[$dayNumber-1];
-        }
-        // demande 'date(n)' en parametre soit 1=janvier, 2=février ...etc
-        function month($monthNumber){
-            $monthLetter = array('janvier' , 'février' , 'mars' , 'avril' , 'mai' , 'juin' , 'juillet' ,'août' , 'septembre' , 'octobre' , 'novembre' , 'décembre');
-            return $monthLetter[$monthNumber-1];
-        }
+    // déclaration des fonctions
+          // demande 'date(N)' en parametre soit 1=lundi, 2=mardi ...etc
+          function day($dayNumber){
+              $dayLetter = array('lundi' , 'mardi' , 'mercredi' , 'jeudi' , 'vendredi' , 'samedi' , 'dimanche' );
+              return $dayLetter[$dayNumber-1];
+          }
+          // demande 'date(n)' en parametre soit 1=janvier, 2=février ...etc
+          function month($monthNumber){
+              $monthLetter = array('janvier' , 'février' , 'mars' , 'avril' , 'mai' , 'juin' , 'juillet' ,'août' , 'septembre' , 'octobre' , 'novembre' , 'décembre');
+              return $monthLetter[$monthNumber-1];
+          }
+    // fin déclaration fonctions
+    // calcul pour le calendrier
+      // on récupère le nombre de jour en janvier 2020
+      $numberOfDayInMonth = date('t', mktime(0,0,0,$monthSelected,1,$yearSelected));
+      // on récupère la position du 1er jour du mois dans la semaine. ex: janvier commence par mercredi = 3
+      $firstDayOfMonth = date('N', mktime(0,0,0,$monthSelected,1,$yearSelected));
+      // on récupère la position du dernier jour du mois dans la semaine ex: janvier commence par mercredi = 3
+      $LastDayOfMonth = date('N', mktime(0,0,0,$monthSelected,$numberOfDayInMonth,$yearSelected));
+      // On calcule nombre de cellule vide avant que le mois commence
+      $beforeMonthStart = $firstDayOfMonth -1;
+      // on calcule le nombre de cellule vide apres que le mois soit terminé
+      $afterMonthEnd = 7 - $LastDayOfMonth;
+      // nombre de cedllule au total
+      $totalCellNumber = $beforeMonthStart + $numberOfDayInMonth + $afterMonthEnd;
+    // fin calendrier
+    
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -37,58 +71,78 @@
                     <p class="consigne"><?= file_get_contents('consigne.txt') ?></p>
                     <div class="row">
                       <div class="col-8 offset-2">
-                        <form action="" id="calendarForm">
-                          <select name="month" form="calendarForm">
+                        <!-- form -->
+                        <form action="#" id="calendarForm" method="POST">
+                          <!-- Selection du mois -->
+                          <p>
+                            Selectionnez un <label class="bold" for="month">mois</label>
+                            et une <label class="bold" for="year">année</label> :
+                          </p>
+                          <select name="month" form="calendarForm" id="month">
                             <?php
-                              for ($j=1; $j<=12; $j++){
-                                ?><option value="<?= month($j);?>"><?= month($j);?></option>
-                                <?php
+                              foreach ($arrayMonth as $numberOfMonth => $nameOfMonth) {
+                                  ?>
+                                  <option value="<?= $numberOfMonth ?>" <?= $monthSelected == $numberOfMonth ? 'selected' : '' ?>><?= $nameOfMonth ?></option>
+                                  <?php
                               }
                             ?>
                           </select>
-                          <select name="year" form="calendarForm">
+                          <!-- Selection de l'année -->
+                          <select name="year" form="calendarForm" id="year">
                             <?php
-                              for ($k=0; $k<=20; $k++){
-                                $year = date('Y',strtotime('-10 years'));
-                                $optionYear = $year += $k;
-                                ?><option value="<?= $optionYear;?>"><?= $optionYear;?></option>
-                                <?php
+                              for ($yearIncr = 1990; $yearIncr <= 2030; $yearIncr++) {
+                                  // Affichage de la ligne
+                                  ?>
+                                  <option value="<?= $yearIncr ?>" <?= $yearSelected == $yearIncr ? 'selected' : '' ?>><?= $yearIncr ?></option>
+                                  <?php
                               }
-                            ?>
+                            ?> 
                           </select>
-                          <input type="submit">
+                          <input type="submit" name="submitButton" id="submitButton" value="Valider">
                         </form>
+                        <!-- date selectionée dans le calendrier -->
+                        <!-- row days -->
+                        <div class="row">
+                          <table>
+                            <thead>
+                              <!-- <tr> = table row -->
+                              <tr>
+                                <?php
+                                  for ($i=1; $i<=7; $i++){
+                                    ?><th><?= day($i);?></th>
+                                    <?php
+                                  }
+                                ?>
+                              </tr>
+                            </thead>
+                          <!-- row cases -->
+                          <tbody>
+                            <tr>
+                              <?php
+                                $dayNumber = 1;
+                                for ($celluleNumber = 1; $celluleNumber <= $totalCellNumber; $celluleNumber++){
+                                  if ($celluleNumber >= $firstDayOfMonth && $dayNumber <= $numberOfDayInMonth){
+                                    ?>
+                                    <td><?= $dayNumber ?></td>
+                                    <?php
+                                    $dayNumber++;
+                                  }else{
+                                    // décalage du 1er au premier jour du mois
+                                    ?>
+                                      <td class="empty"></td>
+                                    <?php
+                                  }
+                                  // <td> = table cellule
+                                  if ($celluleNumber % 7 == 0){ ?>
+                                    </tr><tr>
+                                    <?php
+                                  }
+                                }
+                              ?>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-8">
-                        <h3 class="bold">Janvier 2020</h3>                        
-                      </div>
-                    </div>
-                    <div class="row rowDays text-center">
-                      <?php
-                        for ($l=1; $l<=7; $l++){
-                          ?><div class="col-1 days bold"><?= day($l);?></div>
-                          <?php
-                        }
-                      ?>
-                    </div>
-                    <div class="row rowDays">
-                      <?php 
-                        for ($i=1; $i>=7; $i++){
-                          ?><div class="col-1 case"><?= $i; ?></div>
-                          <?php
-                        }
-                      ?>
-                    </div>
-                    <div class="row rowDays">
-                      <div class="col-1 case">1</div>
-                      <div class="col-1 case">2</div>
-                      <div class="col-1 case"></div>
-                      <div class="col-1 case"></div>
-                      <div class="col-1 case"></div>
-                      <div class="col-1 case"></div>
-                      <div class="col-1 case"></div>
                     </div>
                 </div>
             </div>

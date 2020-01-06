@@ -11,3 +11,34 @@ h3{
   border: 1px solid #235233;
   height: 50px;
 }
+form{
+  margin-bottom: 20px;
+}
+label{
+  cursor: pointer;
+}
+#submitButton{
+  padding: 5px 20px;
+  margin-left: 30px;
+  background-color: #387044;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+th{
+  border: 1px solid #235233;
+  text-align: center;  
+  padding: 10px 0px;
+  width: 120px;
+  background-color: #387044;
+  color: white;
+}
+td{
+  width: 120px;
+  padding: 0 0 30px 5px;
+  border: 1px solid #235233;
+}
+.empty{
+  background-color: #23523330;
+}
