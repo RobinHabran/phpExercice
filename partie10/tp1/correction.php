@@ -65,13 +65,13 @@ include_once 'indexCtrl.php';
               <div class="col-md-12">
                 <!-- diplôme -->
                 <label for="diploma">Diplôme</label>
-                <selsect for="newStudent" name="diploma" id="diploma">
-                  <option>sans</option>
-                  <option>Bac</option>
-                  <option>Bac+2</option>
-                  <option>Back+3</option>
-                  <option>supérieur</option>
-                </selsect>
+                <select for="newStudent" name="diploma" id="diploma">
+                  <option value="sans">sans</option>
+                  <option value="Bac">Bac</option>
+                  <option value="Bac+2">Bac+2</option>
+                  <option value="Bac+3">Back+3</option>
+                  <option value="supérieur">supérieur</option>
+                </select>
                 <!-- lien code academy -->
                 <label for="codeAcademy">Lien codeacademy</label>
                 <input type="url" for="newStudent" name="codeAcademy" id="codeAcademy" placeholder="www.code-academy.fr/user/xavier60400">
@@ -79,7 +79,7 @@ include_once 'indexCtrl.php';
                 <label for="numberOfBadge">Nombre de badge</label>
                 <select for="newStudent" name="numberOfBadge" id="numberOfBadge">
                   <?php for ($i=1; $i<=6; $i++){ ?>
-                    <option><?php echo $i; ?></option>
+                  <option value="<?php $i; ?>"><?php echo $i; ?></option>
                   <?php } ?>
                 </select>
                 <!-- votre hero -->
@@ -95,11 +95,10 @@ include_once 'indexCtrl.php';
             </div>
             <input type="submit" for="newStudent" name="submitButton" id="submitButton" value="Continuer - S'enregistrer">
           </form>
-          <?php
+          <?php 
           }else{?>
           <h2>Veuillez vérifier vos informations :</h2>
-          <p>Prénom : <?=$firstname?></p>
-          <p>Nom : <?=$lastname?></p>
+          <p>Prénom : <?=$firstname;?></p>
           <?php
           }
           ?>

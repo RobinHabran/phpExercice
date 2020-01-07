@@ -16,12 +16,11 @@ form{
 label{
   font-weight: 600;
 }
-input{
+input, textarea, select{
   margin-bottom: 10px;
 }
 textarea{
   padding: 5px 8px;
-  margin-bottom: 10px;
   height: 80px;
   width: 90%;
 }
