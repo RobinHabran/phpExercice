@@ -1,0 +1,75 @@
+/* general */
+body, html{
+  font-family: 'Public Sans', sans-serif;
+  font-size: 1rem;
+}
+form{
+  padding: 20px 30px;
+  border-radius: 5px;
+  /*
+  display = flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  */
+}
+label{
+  font-weight: 600;
+}
+input{
+  margin-bottom: 10px;
+}
+textarea{
+  padding: 5px 8px;
+  margin-bottom: 10px;
+  height: 80px;
+  width: 90%;
+}
+#identity{
+  padding: 10px 5px;
+  border: 1px solid #0088ff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+#experience{
+  padding: 10px 5px;
+  border: 1px solid #0088ff;
+  border-radius: 5px;
+  background-color: white;
+}
+/* row identity */
+#identity label{
+  display: inline-block;
+  width: 45%;
+}
+#identity input{
+  display: inline-block;
+  width: 45%;
+}
+/* row experience */
+#experience label{
+  display: block;
+  width: 90%;
+}
+#experience input{
+  display: block;
+  width: 90%;
+}
+/* cas particuliers */
+#firstname, #lastname{
+  display: inline-block;
+  width: 45%;
+}
+#submitButton{
+  padding: 10px 40px;
+  margin-top: 15px;
+  background-color: #2d864d;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+.error{
+  color: red;
+}
