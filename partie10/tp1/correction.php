@@ -30,7 +30,7 @@ include_once 'indexCtrl.php';
             <div class="row" id="identity">
               <div class="col-md-6">
                 <!-- prénom -->
-                <p class="error"><?= (!empty($_POST['firstname']) ? $formError['firstname'] : ''); ?></p>
+                <?php if(isset($_POST['firstname']) || isset($_POST['lastname'])){?><div><p class="error"><?= $formError['name']; ?></p></div><?php } ?>
                 <label for="firstname">Prénom</label>
                 <label for="lastname">Nom</label>
                 <input type="text" for="newStudent" name="firstname" id="firstname" placeholder="Xavier" value="<?php (!empty($_GET['firstname']) ? $formError['firstname'] : ''); ?>">
@@ -93,12 +93,13 @@ include_once 'indexCtrl.php';
                 <textarea for="newStudent" name="experienceDev" id="experienceDev" placeholder="Apprentissage d'un langage de programmation; construction d'un pc gamer; présentation Powerpoint... etc"></textarea>
               </div>
             </div>
-            <input type="submit" for="newStudent" name="submitButton" id="submitButton" value="Continuer - S'enregistrer">
+            <input type="submit" for="newStudent" name="submitButton" id="submitButton" value="Continuer&nbsp;-&nbsp;S'enregistrer">
           </form>
           <?php 
           }else{?>
           <h2>Veuillez vérifier vos informations :</h2>
           <p>Prénom : <?=$firstname;?></p>
+          <p>Nom : <?=$lastname;?></p>
           <?php
           }
           ?>
