@@ -4,43 +4,34 @@
 // tableau des erreurs
 $formError = array();
 // les regex :
-$regexName = '/[a-zéèà \-]+$/i';
+$regexName = '/^[a-zéèà \-]+$/i';
+$regexCellNumber = '/^[0-9]{20}$/';
 //fin déclaration des variables
-
 // on verifie que le bouton submit a été clické
 if (isset($_POST['submitButton'])) {
   // on érifie que le champ 'firstname' et 'lastname' n'est pas vide
-  if(!empty($_POST['firstname']) && !empty($_POST['lastname'])){ // cas d'erreur firstname && lastname champ vide
-    // comparaison de valeur avec la regex
-    if (preg_match($regexName, $_POST['firstname']) && !empty($_POST['lastname'])) {
-      // 'htmlspecialchars()' remplace le balisage par leur valeur en html. ex: '<script>' devient '&lt script &gt'
-      $firstname = htmlspecialchars($_POST['firstname']);
-      $lastname = htmlspecialchars($_POST['lastname']);
-    } else { // cas d'erreur non respect de la syntaxe
-      $formError['name'] = 'Veuillez indiquer un prénom ne contenant que des lettres majuscules et miuscules';
-    }
-  }elseif (empty($_POST['firstname']) && empty($_POST['lastname'])){
-    $formError['name'] = 'Veuillez renseigner votre prénom et votre nom';
-  }elseif (!empty($_POST['firstname'])) { // on vérifie que le champ 'firstname' n'est pas vide
+  if (!empty($_POST['firstname'])) { // cas d'erreur firstname && lastname champ vide
     // comparaison de valeur avec la regex
     if (preg_match($regexName, $_POST['firstname'])) {
       // 'htmlspecialchars()' remplace le balisage par leur valeur en html. ex: '<script>' devient '&lt script &gt'
       $firstname = htmlspecialchars($_POST['firstname']);
     } else { // cas d'erreur non respect de la syntaxe
-      $formError['name'] = 'Veuillez indiquer un prénom ne contenant que des lettres majuscules et miuscules';
+      $formError['firstname'] = 'Veuillez indiquer un prénom ne contenant que des lettres majuscules et miuscules';
     }
-  } elseif (empty($_POST['firstname'])) { // cas d'erreur firstname champ vide
-    $formError['name'] = 'Veuillez renseigner votre prénom';
-  }elseif (!empty($_POST['lastname'])) { // on érifie que le champ 'lastname' n'est pas vide
+  } elseif (empty($_POST['firstname'])) {
+    $formError['firstname'] = 'Veuillez renseigner votre prénom';
+  }
+  // on érifie que le champ 'lastname' n'est pas vide
+  if (!empty($_POST['lastname'])) { // cas d'erreur firstname && lastname champ vide
     // comparaison de valeur avec la regex
     if (preg_match($regexName, $_POST['lastname'])) {
       // 'htmlspecialchars()' remplace le balisage par leur valeur en html. ex: '<script>' devient '&lt script &gt'
       $lastname = htmlspecialchars($_POST['lastname']);
     } else { // cas d'erreur non respect de la syntaxe
-      $formError['name'] = 'Veuillez indiquer un nom ne contenant que des lettres majuscules et miuscules';
+      $formError['lastname'] = 'Veuillez indiquer un nom ne contenant que des lettres majuscules et miuscules';
     }
-  } elseif(empty($_POST['lastname'])) { // cas d'erreur champ vide
-    $formError['name'] = 'Veuillez renseigner votre nom';
+  } elseif (empty($_POST['lastname'])) {
+    $formError['firstname'] = 'Veuillez renseigner votre nom';
   }
 }
 

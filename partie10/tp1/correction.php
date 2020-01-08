@@ -29,13 +29,17 @@ include_once 'indexCtrl.php';
           <form name="newStudent" action="#" method="POST">
             <div class="row" id="identity">
               <div class="col-md-6">
-                <!-- prénom -->
-                <?php if(isset($_POST['firstname']) || isset($_POST['lastname'])){?><div><p class="error"><?= $formError['name']; ?></p></div><?php } ?>
-                <label for="firstname">Prénom</label>
-                <label for="lastname">Nom</label>
-                <input type="text" for="newStudent" name="firstname" id="firstname" placeholder="Xavier" value="<?php (!empty($_GET['firstname']) ? $formError['firstname'] : ''); ?>">
-                <!-- Nom -->
-                <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones" value="<?php (!empty($_GET['lastname']) ? $formError['lastname'] : ''); ?>">
+                <div class="divName">
+                  <?php if(isset($_POST['firstname'])){?><div><p class="error"><?= $formError['firstname']; ?></p></div><?php } ?>
+                  <!-- prénom -->
+                  <label for="firstname">Prénom</label>
+                  <input type="text" for="newStudent" name="firstname" id="firstname" placeholder="Xavier" value="<?= (!empty($_POST['firstname']) ? $_POST['firstname'] : ''); ?>">
+                </div>
+                <div class="divName">
+                  <!-- Nom -->
+                  <label for="lastname">Nom</label>
+                  <input type="text" for="newStudent" name="lastname" id="lastname" placeholder="Dupont de Lingones" value="<?= (!empty($_POST['lastname']) ? $_POST['lastname'] : ''); ?>">
+                </div>
                 <!-- date de naissance -->
                 <label for="dayOfBirth">Date de naissance</label>
                 <input type="text" for="newStudent" name="dayOfBirth" id="dayOfBirth" placeholder="15/04/1997">
@@ -98,8 +102,12 @@ include_once 'indexCtrl.php';
           <?php 
           }else{?>
           <h2>Veuillez vérifier vos informations :</h2>
-          <p>Prénom : <?=$firstname;?></p>
-          <p>Nom : <?=$lastname;?></p>
+          <div class="row" id="recapInfo">
+            <div class="col-md-10 offset-md-1">
+              <p>Prénom : <?=$firstname;?></p>
+              <p>Nom : <?=$lastname;?></p>
+            </div>
+          </div>
           <?php
           }
           ?>
