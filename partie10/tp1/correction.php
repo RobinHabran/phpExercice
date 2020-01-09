@@ -42,8 +42,11 @@ include_once 'indexCtrl.php';
                 </div>
                 <!-- date de naissance -->
                 <label for="dayOfBirth">Date de naissance</label>
-                <input type="text" for="newStudent" name="dayOfBirth" id="dayOfBirth" placeholder="15/04/1997">
-                <!-- pays de naissance -->
+                <input disable hidden type="text" for="newStudent" name="dayOfBirth" id="dayOfBirth" placeholder="15/04/1997">
+                <input type="text" for="newStudent" class="dayOfBirth" name="dayOfBirth1" id="dayOfBirth1" placeholder="15"/> /
+                <input type="text" for="newStudent" class="dayOfBirth" name="dayOfBirth2" id="dayOfBirth2" placeholder="04"/> /
+                <input type="text" for="newStudent" class="dayOfBirth" name="dayOfBirth3" id="dayOfBirth3" placeholder="1997"/>
+                          <!-- pays de naissance -->
                 <label for="countryOfBirth">Pays de naissance</label>
                 <input type="text" for="newStudent" name="countryOfBirth" id="countryOfBirth" placeholder="France">
                 <!-- nationnalité -->
@@ -106,6 +109,7 @@ include_once 'indexCtrl.php';
             <div class="col-md-10 offset-md-1">
               <p>Prénom : <?=$firstname;?></p>
               <p>Nom : <?=$lastname;?></p>
+              <p>Date de naissance : <?=$dayOfBirth;?></p>
             </div>
           </div>
           <?php

@@ -20,11 +20,6 @@ label{
 input, textarea, select{
   margin-bottom: 10px;
 }
-textarea{
-  padding: 5px 8px;
-  height: 80px;
-  width: 90%;
-}
 #identity{
   padding: 10px 5px;
   border: 1px solid #0088ff;
@@ -32,34 +27,18 @@ textarea{
   margin-bottom: 20px;
   background-color: white;
 }
-#experience{
-  padding: 10px 5px;
-  border: 1px solid #0088ff;
-  border-radius: 5px;
-  background-color: white;
-}
 /* row identity */
 #identity label{
   display: inline-block;
-  width: 95%;
+  width: 20%;
 }
 #identity input{
   display: inline-block;
-  width: 90%;
-}
-/* row experience */
-#experience label{
-  display: block;
-  width: 90%;
-}
-#experience input{
-  display: block;
-  width: 90%;
 }
 /* cas particuliers */
 #firstname, #lastname{
   display: inline-block;
-  width: 45%;
+  width: 60%;
 }
 #submitButton{
   padding: 10px 40px;
@@ -73,17 +52,13 @@ textarea{
 #recapInfo{
   margin-top: 30px;
 }
-.error{
-  color: red;
+.error{ color: red; }
+#age{
+  width: 20%;
 }
-.divName{
-  width: 45%;
+p[class="ans"]{
   display: inline-block;
 }
-label[for="dayOfBirth"]{
-  width: 100%!important;
-  display: block;
-}
-.dayOfBirth{
-  width: 10% !important;
+#company{
+  width: 60%;
 }
