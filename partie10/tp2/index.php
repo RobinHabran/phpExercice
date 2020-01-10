@@ -1,81 +1,59 @@
-<?php 
+<?php
 include_once 'indexCtrl.php';
 ?>
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="../assets/css/index.css" />
-    <link rel="stylesheet" href="../assets/css/form2.css" />       
-    <link href="https://fonts.googleapis.com/css?family=Public+Sans:400,500,600,700,800,900|Roboto:400,400i,700,900&display=swap" rel="stylesheet">
-    <title>Exercice 1</title>
-  </head>
-  <body>
-    <?php include_once '../assets/php/navbar.php'; ?>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h1>Tp 2 : </h1>
-            </div>
-        </div>
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          <?php
-          if(count($formError)>0 || !isset($_POST['submitButton'])){
-          ?>
-          <h2>Enregistrez-vous</h2>
-          <form name="newContact" action="#" method="POST">
-            <div class="row" id="identity">
-              <div class="col-md-6 offset-md-3">
-                <div class="form-group<?= isset($errorMessage) ? ' has-danger' : '' ?>">
-                    <label for="civility">Civilité  </label>
-                    <select <?= isset($errorMessage['civility']) ? 'is-invalid' : '' ?>" name="civility" id="civility">
-                        <option disabled hidden <?php if (empty($_POST['civility'])) { ?>selected<?php } ?>>Veuillez renseigner votre civilité</option>
-                        <option <?= !empty($_POST['civility']) && $_POST['civility'] == 'miss' ? 'selected' : '' ?> value="miss">Madame</option>
-                        <option <?= !empty($_POST['civility']) && $_POST['civility'] == 'mister' ? 'selected' : '' ?> value="mister">Monsieur</option>
-                        <option <?= !empty($_POST['civility']) && $_POST['civility'] == 'nonBinary' ? 'selected' : '' ?> value="nonBinary">Non-Binaire</option>
+<html lang="fr" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="../assets/ex2-corrige.css" />
+        <title>TP 2</title>
+    </head>
+    <body class="container-fluid">
+        <h1>TP 2</h1>
+        <h2>Remplissez ce formulaire pour vous inscrire :</h2>
+        <div class="formContainer row justify-content-center text-center">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="col-lg-4 col-sd-4 col-sm-12">
+                <div class="form-group">
+                    <label for="civility">Civilité : </label>
+                    <select name="civility" id="civility" class="form-control <?= (isset($_POST['civility']) ? (!isset($formError['civility']) ? 'is-valid' : 'is-invalid') : '') ?>">
+                        <option disabled <?= !isset($_POST['civility']) ? 'selected' : '' ?>>M. ou Mme.</option>
+                        <option value="M." <?= isset($_POST['civility']) && $_POST['civility'] == 'M.' ? 'selected' : '' ?>>M.</option>
+                        <option value="Mme." <?= isset($_POST['civility']) && $_POST['civility'] == 'Mme.' ? 'selected' : '' ?>>Mme.</option>
                     </select>
+                    <p class="text-danger"><?= isset($formError['civility']) ? $formError['civility'] : '' ?></p>
+                    <label for="firstname">Prénom : </label><input class="form-control <?= (isset($_POST['firstname']) ? (!isset($formError['firstname']) ? 'is-valid' : 'is-invalid') : '') ?>" type="text" name="firstname" id="firstname" placeholder="Jean-Claude" value="<?= isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>" required />
+                    <p class="text-danger"><?= isset($formError['firstname']) ? $formError['firstname'] : '' ?></p>
+                    <label for="lastname">Nom : </label><input class="form-control <?= (isset($_POST['lastname']) ? (!isset($formError['lastname']) ? 'is-valid' : 'is-invalid') : '') ?>" type="text" name="lastname" id="lastname" placeholder="Gloomy" value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" required />
+                    <p class="text-danger"><?= isset($formError['lastname']) ? $formError['lastname'] : '' ?></p>
+                    <label for="age">Votre âge : </label><input class="form-control <?= (isset($_POST['age']) ? (!isset($formError['age']) ? 'is-valid' : 'is-invalid') : '') ?>" type="number" min="0" max="120" name="age" id="age" placeholder="28" value="<?= isset($_POST['age']) ? $_POST['age'] : '' ?>" required />
+                    <p class="text-danger"><?= isset($formError['age']) ? $formError['age'] : '' ?></p>
+                    <label for="society">Votre société : </label><input class="form-control <?= (isset($_POST['society']) ? (!isset($formError['society']) ? 'is-valid' : 'is-invalid') : '') ?>" type="text" name="society" id="society" placeholder="La Manu" value="<?= isset($_POST['society']) ? $_POST['society'] : '' ?>" required />
+                    <p class="text-danger"><?= isset($formError['society']) ? $formError['society'] : '' ?></p>
+                    <input type="submit" name="addCandidate" id="addCandidate" class="btn btn-primary" />
                 </div>
-                <div>
-                  <!-- Nom -->
-                  <?php if(isset($_POST['lastname'])){?><div><p class="error"><?= $formError['lastname']; ?></p></div><?php } ?>
-                  <label for="lastname">Nom</label>
-                  <input type="text" for="newContact" name="lastname" id="lastname" placeholder="Dupont de Lingones" value="<?= (!empty($_POST['lastname']) ? $_POST['lastname'] : ''); ?>">
-                </div>
-                <div>
-                  <!-- prénom -->
-                  <?php if(isset($_POST['firstname'])){?><div><p class="error"><?= $formError['firstname']; ?></p></div><?php } ?>
-                  <label for="firstname">Prénom</label>
-                  <input type="text" for="newContact" name="firstname" id="firstname" placeholder="Xavier" value="<?= (!empty($_POST['firstname']) ? $_POST['firstname'] : ''); ?>">
-                </div>
-                <div>
-                  <!-- age -->
-                  <label for="age">Age</label>
-                  <input type="text" for="newContact" name="age" id="age" placeholder="26">
-                  <p class="ans">ans</p>
-                  <?php if(isset($_POST['age'])){?><div><p class="error"><?= $formError['age']; ?></p></div><?php } ?>
-                </div>
-                <div>
-                  <!-- société -->
-                  <label for="company">Société</label>
-                  <input type="text" for="newContact" name="company" id="company" placeholder="Mentalworks">
-                  <?php if(isset($_POST['company'])){?><div><p class="error"><?= $formError['company']; ?></p></div><?php } ?>
-                </div>
-                <div class="row">
-                  <div class="cold-md-4 offset-md-8">
-                    <input type="submit" for="newContact" name="submitButton" id="submitButton" value="Continuer&nbsp;-&nbsp;S'enregistrer">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-          <?php }else{ ?>
-          <p>Formulaire envoyé</p>
-          <?php } ?>
+            </form>
         </div>
-      </div>
-    </div>
-  </body>
+        <?php
+        if (isset($civility) && isset($firstname) && isset($lastname) && isset($age) && isset($society)) {
+            ?>
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <ul class="">
+                        <li>Civilité : <?= $civility ?></li>
+                        <li>Nom : <?= $lastname ?></li>
+                        <li>Prénom : <?= $firstname ?></li>
+                        <li>Age : <?= $age ?> an(s)</li>
+                        <li>Société : <?= $society ?></li>
+                    </ul>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
 </html>

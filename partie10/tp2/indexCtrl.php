@@ -1,65 +1,56 @@
 <?php
-
-//déclaration des variables
-// tableau des erreurs
 $formError = array();
-// les regex :
-$regexName = '/^[a-zéèà \-]+$/i';
-$regexCompany = '/^[.^;]*$/i';
-$regexAge = '/^[1-110]$/';
-//fin déclaration des variables
-// on verifie que le bouton submit a été clické
-if (isset($_POST['submitButton'])) {
-  // on érifie que le champ 'firstname' et 'lastname' n'est pas vide
-  if (!empty($_POST['firstname'])) { // cas d'erreur firstname && lastname champ vide
-    // comparaison de valeur avec la regex
-    if (preg_match($regexName, $_POST['firstname'])) {
-      // 'htmlspecialchars()' remplace le balisage par leur valeur en html. ex: '<script>' devient '&lt script &gt'
-      $firstname = htmlspecialchars($_POST['firstname']);
-    } else { // cas d'erreur non respect de la syntaxe
-      $formError['firstname'] = 'Veuillez indiquer un prénom ne contenant que des lettres majuscules et miuscules';
-    }
-  } elseif (empty($_POST['firstname'])) {
-    $formError['firstname'] = 'Veuillez renseigner votre prénom';
-  }
-  
-  // on érifie que le champ 'lastname' n'est pas vide
-  if (!empty($_POST['lastname'])) { // cas d'erreur firstname && lastname champ vide
-    // comparaison de valeur avec la regex
-    if (preg_match($regexName, $_POST['lastname'])) {
-      // 'htmlspecialchars()' remplace le balisage par leur valeur en html. ex: '<script>' devient '&lt script &gt'
-      $lastname = htmlspecialchars($_POST['lastname']);
-    } else { // cas d'erreur non respect de la syntaxe
-      $formError['lastname'] = 'Veuillez indiquer un nom ne contenant que des lettres majuscules et miuscules';
-    }
-  } elseif (empty($_POST['lastname'])) {
-    $formError['firstname'] = 'Veuillez renseigner votre nom';
-  }
-  
-  // on érifie que le champ 'age' n'est pas vide
-  if (!empty($_POST['age'])) { // cas d'erreur firstname && lastname champ vide
-    // comparaison de valeur avec la regex
-    if (preg_match($regexAge, $_POST['age'])) {
-      // 'htmlspecialchars()' remplace le balisage par leur valeur en html. ex: '<script>' devient '&lt script &gt'
-      $age = htmlspecialchars($_POST['age']);
-    } else { // cas d'erreur non respect de la syntaxe
-      $formError['age'] = 'Veuillez indiquer un age en chiffre';
-    }
-  } elseif (empty($_POST['age'])) {
-    $formError['age'] = 'Veuillez renseigner votre age';
-  }
-  
-  // on érifie que le champ 'company'n'est pas vide
-  if (!empty($_POST['company'])) { // cas d'erreur firstname && lastname champ vide
-    // comparaison de valeur avec la regex
-    if (preg_match($regexCompany, $_POST['company'])) {
-      // 'htmlspecialchars()' remplace le balisage par leur valeur en html. ex: '<script>' devient '&lt script &gt'
-      $company = htmlspecialchars($_POST['company']);
-    } else { // cas d'erreur non respect de la syntaxe
-      $formError['company'] = 'Veuillez indiquer une société sans caractères spéciaux';
-    }
-  } elseif (empty($_POST['company'])) {
-    $formError['company'] = 'Veuillez renseigner votre société';
-  }
-}
+$regexName = '/^[A-Z][a-zéèêàâîôùç\s-A-Z]+$/';
+$regexSociety = '/^[a-zéèêàâîôùç\s-A-Z0-9]+$/';
 
+if (isset($_POST['addCandidate'])){
+    if(!empty($_POST['civility'])){
+        if($_POST['civility'] == 'M.' || $_POST['civility'] == 'Mme.'){
+            $civility = htmlspecialchars($_POST['civility']);
+        }else{
+            $formError['civility'] = 'Veuillez sélectionner une des propositions présentes dans la liste.';
+        }
+    }else{
+        $_POST['civility'] = 'Veuillez sélectionner une des propositions présentes dans la liste.';
+    }
+    if(!empty($_POST['firstname'])){
+        if(preg_match($regexName, $_POST['firstname'])){
+            $firstname = htmlspecialchars($_POST['firstname']);
+        }else{
+            $formError['firstname'] = 'Le prénom doit contenir des lettres majuscules et minuscules, des tirets ou des espaces.';
+        }
+    }else{
+        $formError['firstname'] = 'Veuillez entrer votre prénom';
+    }
+    if(!empty($_POST['lastname'])){
+        if(filter_var($_POST['lastname'], FILTER_VALIDATE_REGEXP, array('options'=>array('regexp'=>$regexName)))){
+            $lastname = htmlspecialchars($_POST['lastname']);
+        }else{
+            $formError['lastname'] = 'Le nom doit contenir des lettres majuscules et minuscules, des tirets ou des espaces.';
+        }
+    }else{
+        $formError['lastname'] = 'Veuillez entrer votre nom';
+    }
+    if (!empty($_POST['age'])){
+        if(filter_var($_POST['age'], FILTER_VALIDATE_INT)){
+            if($_POST['age'] >= 0 && $_POST['age'] <= 120){
+                $age = htmlspecialchars($_POST['age']);
+            }else{
+                $formError['age'] = 'Votre âge doit être compris entre 1 et 120 ans.';
+            }
+        }else{
+            $formError['age'] = 'Veuillez entrer un nombre correcte.';
+        }
+    }else{
+        $formError['age'] = 'Veuillez entrer votre age.';
+    }
+    if(!empty($_POST['society'])){
+        if(preg_match($regexSociety, $_POST['society'])){
+            $society = htmlspecialchars($_POST['society']);
+        }else{
+            $formError['society'] = 'Les caractères autorisés sont les lettres en majuscules/minuscules, les chiffres, les espaces, les tirrets et les accents.';
+        }
+    }else{
+        $formError['society'] = 'Veuillez préciser votre société.';
+    }
+}
